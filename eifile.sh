@@ -1,2 +1,4 @@
-echo "It works!! :D"
-ls
+echo "Installing npm dependencies"
+npm install
+echo "Installing bower dependencies"
+bower install
