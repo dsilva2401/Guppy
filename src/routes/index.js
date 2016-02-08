@@ -31,6 +31,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 
 	// Views
 		viewsRouter.get('/wmaster', Auth.Webmaster.verifySession, Views.webmaster );
+		viewsRouter.get('/register', Views.register );
 
 	// Set routers
 		$app.use( viewsRouter );
