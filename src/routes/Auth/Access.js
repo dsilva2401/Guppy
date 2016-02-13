@@ -15,6 +15,18 @@ module.exports = function ($) {
 			Response.error(req, res, next)
 		)
 	}
+
+	r.login = function (req, res, next) {
+		Access.login(req.body)
+		// Success
+		.then(
+			Response.success(req, res, next)
+		)
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		);
+	}
 	
 	return r;
 }

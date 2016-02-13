@@ -15,7 +15,7 @@ module.exports = function ($) {
 		.then(function (person) {
 			db.model('Credential').create({
 				email: userData.email,
-				password: userData.password,
+				password: $.global.md5(userData.password),
 				PersonId: person.id
 			})
 			// Success
@@ -27,6 +27,25 @@ module.exports = function ($) {
 				person.destroy();
 				deferred.reject(error);
 			});	
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
+	}
+
+	Access.login = function (credentials) {
+		var deferred = $.q.defer();		
+		db.model('Credential').findOne({
+			where: {
+				email: credentials.email,
+				password: $.global.md5(credentials.password)
+			}
+		})
+		// Success
+		.then(function (credential) {
+			deferred.resolve(!!credential);
 		})
 		// Error
 		.catch(function (error) {

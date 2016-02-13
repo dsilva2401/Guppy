@@ -26,6 +26,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 		authRouter.post('/webmaster/login', Auth.WebmasterAccess.login);
 		authRouter.delete('/webmaster/logout', Auth.WebmasterAccess.logout);
 		authRouter.post('/register', Auth.Access.register);
+		authRouter.post('/login', Auth.Access.login);
 
 	// API
 		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
@@ -33,6 +34,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 	// Views
 		viewsRouter.get('/wmaster', Auth.WebmasterAccess.verifySession, Views.webmaster );
 		viewsRouter.get('/register', Views.register );
+		viewsRouter.get('/login', Views.login );
 
 	// Set routers
 		$app.use( viewsRouter );
