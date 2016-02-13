@@ -16,4 +16,5 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$methods.Console = require('./Console')($);
 		$methods.Response = require('./Response')($);
 		$methods.Webmaster = require('./Webmaster')($);
+		$methods.Access = require('./Access')($);
 }

@@ -23,14 +23,15 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 		apiRouter.all('/*', Middleware.startRequest );
 
 	// Auth
-		authRouter.post('/webmaster/login', Auth.Webmaster.login);
-		authRouter.delete('/webmaster/logout', Auth.Webmaster.logout);
+		authRouter.post('/webmaster/login', Auth.WebmasterAccess.login);
+		authRouter.delete('/webmaster/logout', Auth.WebmasterAccess.logout);
+		authRouter.post('/register', Auth.Access.register);
 
 	// API
 		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
 
 	// Views
-		viewsRouter.get('/wmaster', Auth.Webmaster.verifySession, Views.webmaster );
+		viewsRouter.get('/wmaster', Auth.WebmasterAccess.verifySession, Views.webmaster );
 		viewsRouter.get('/register', Views.register );
 
 	// Set routers

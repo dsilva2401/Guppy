@@ -24,6 +24,14 @@
 						password: $scope.models.password
 					}
 				})
+				// Success
+				.then(function (resp) {
+					console.log(resp);
+				})
+				// Error
+				.catch(function (resp) {
+					console.warn('Error on register', resp);
+				})
 			}
 		
 		// Init

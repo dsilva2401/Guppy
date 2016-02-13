@@ -1,7 +1,8 @@
 module.exports = function ($) {
 	var c = {};
 
-	c.Webmaster = require('./Webmaster')($);
+	c.WebmasterAccess = require('./WebmasterAccess')($);
+	c.Access = require('./Access')($);
 
 	return c;
 }

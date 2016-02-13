@@ -1,16 +1,39 @@
 module.exports = function ($) {
 	var Access = {};
+	var db = $.methods.Database('main');
 	
-	/*
-	Access.createRandomWord = function (size) {
-		var f = '';
-		var abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-		for (var i=0; i<size; i++) {
-			f += abc[ Math.floor( Math.random()*abc.length ) ];
-		}
-		return f;
+	Access.register = function (userData) {
+		var deferred = $.q.defer();		
+		db.model('Person').create({
+			name: userData.name,
+			lastname: userData.lastname,
+			email: userData.email,
+			sex: userData.sex,
+			birthday: userData.birthday
+		})
+		// Success
+		.then(function (person) {
+			db.model('Credential').create({
+				email: userData.email,
+				password: userData.password,
+				PersonId: person.id
+			})
+			// Success
+			.then(function (credential) {
+				deferred.resolve(person);
+			})
+			// Error
+			.catch(function (error) {
+				person.destroy();
+				deferred.reject(error);
+			});	
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
 	}
-	*/
 
 	return Access;
 }
