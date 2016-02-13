@@ -16,8 +16,7 @@
 				})
 				// Success
 				.then(function (resp) {
-					// $window.location.reload();
-					console.log( resp.data );
+					$window.location.reload();
 				})
 				// Error
 				.catch(function (resp) {

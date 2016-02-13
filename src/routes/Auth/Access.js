@@ -19,9 +19,18 @@ module.exports = function ($) {
 	r.login = function (req, res, next) {
 		Access.login(req.body)
 		// Success
-		.then(
-			Response.success(req, res, next)
-		)
+		.then(function (allowed) {
+			if (!allowed) {
+				res.status(401);
+				Response.error(req, res, next)({
+					details: 'Invalid credentials'
+				});
+				return;
+			}
+			Response.success(req, res, next)({
+				details: 'Success on login'
+			})
+		})
 		// Error
 		.catch(
 			Response.error(req, res, next)
