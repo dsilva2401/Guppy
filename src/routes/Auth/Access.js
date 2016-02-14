@@ -4,6 +4,19 @@ module.exports = function ($) {
 	var Database = $.methods.Database;
 	var Response = $.methods.Response;
 
+	r.getCurrentSession = function (req, res, next) {
+		Access.verifySession(req)
+		// Success
+		.then(function (person) {
+			req.currentPerson = person;
+			next();
+		})
+		// Error
+		.catch(
+			Response.error(req, res, next)
+		)
+	}
+
 	r.register = function (req, res, next) {
 		Access.register(req.body)
 		// Success
@@ -43,6 +56,16 @@ module.exports = function ($) {
 		.catch(
 			Response.error(req, res, next)
 		);
+	}
+
+	r.redirectIfAlreadyLoggedIn = function (url) {
+		return function (req, res, next) {
+			if (req.currentPerson) {
+				res.redirect(url);
+				return;
+			}
+			next();
+		}
 	}
 	
 	return r;

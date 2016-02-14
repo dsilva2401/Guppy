@@ -26,7 +26,7 @@
 				})
 				// Success
 				.then(function (resp) {
-					console.log(resp);
+					$window.location.reload();
 				})
 				// Error
 				.catch(function (resp) {

@@ -36,6 +36,37 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
+	Access.verifySession = function (req) {
+		var deferred = $.q.defer();
+		db.model('SessionKey').findOne({
+			where: {
+				PersonId: req.cookies.skui,
+				key: req.cookies.skk
+			}
+		})
+		// Success
+		.then(function (session) {
+			if (!session) {
+				deferred.resolve(null);
+				return;
+			}
+			db.model('Person').findById(session.dataValues.PersonId)
+			// Success
+			.then(function (person) {
+				deferred.resolve(person);
+			})
+			// Error
+			.catch(function (error) {
+				deferred.reject(error)
+			})
+		})
+		// Error
+		.catch(function (error) {
+			deferred.reject(error)
+		})
+		return deferred.promise;
+	}
+
 	Access.createSession = function (personId, res) {
 		var deferred = $.q.defer();
 		db.model('SessionKey').create({

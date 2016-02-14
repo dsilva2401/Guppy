@@ -20,7 +20,10 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 
 	// Middleware
 		authRouter.all('/*', Middleware.startRequest );
+		authRouter.all('/*', Auth.Access.getCurrentSession );
 		apiRouter.all('/*', Middleware.startRequest );
+		apiRouter.all('/*', Auth.Access.getCurrentSession );
+		viewsRouter.all('/*', Auth.Access.getCurrentSession );
 
 	// Auth
 		authRouter.post('/webmaster/login', Auth.WebmasterAccess.login);
@@ -33,8 +36,8 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 
 	// Views
 		viewsRouter.get('/wmaster', Auth.WebmasterAccess.verifySession, Views.webmaster );
-		viewsRouter.get('/register', Views.register );
-		viewsRouter.get('/login', Views.login );
+		viewsRouter.get('/register', Auth.Access.redirectIfAlreadyLoggedIn('/'), Views.register );
+		viewsRouter.get('/login', Auth.Access.redirectIfAlreadyLoggedIn('/'), Views.login );
 
 	// Set routers
 		$app.use( viewsRouter );
