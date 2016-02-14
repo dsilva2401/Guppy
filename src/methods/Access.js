@@ -1,5 +1,6 @@
 module.exports = function ($) {
 	var Access = {};
+	var Useful = $.methods.Useful;
 	var db = $.methods.Database('main');
 	
 	Access.register = function (userData) {
@@ -35,7 +36,26 @@ module.exports = function ($) {
 		return deferred.promise;
 	}
 
-	Access.login = function (credentials) {
+	Access.createSession = function (personId, res) {
+		var deferred = $.q.defer();
+		db.model('SessionKey').create({
+			PersonId: personId,
+			key: Useful.createRandomWord(30)
+		})
+		// Success
+		.then(function (session) {
+			res.cookie('skui', personId);
+			res.cookie('skk', session.dataValues.key);
+			deferred.resolve(session);
+		})
+		// Errir
+		.catch(function (error) {
+			deferred.reject(error);
+		});
+		return deferred.promise;
+	}
+
+	Access.verifyCredentials = function (credentials) {
 		var deferred = $.q.defer();		
 		db.model('Credential').findOne({
 			where: {
@@ -45,7 +65,7 @@ module.exports = function ($) {
 		})
 		// Success
 		.then(function (credential) {
-			deferred.resolve(!!credential);
+			deferred.resolve(credential);
 		})
 		// Error
 		.catch(function (error) {

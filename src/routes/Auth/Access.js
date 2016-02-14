@@ -17,19 +17,27 @@ module.exports = function ($) {
 	}
 
 	r.login = function (req, res, next) {
-		Access.login(req.body)
+		Access.verifyCredentials(req.body)
 		// Success
-		.then(function (allowed) {
-			if (!allowed) {
+		.then(function (credential) {
+			if (!credential) {
 				res.status(401);
 				Response.error(req, res, next)({
 					details: 'Invalid credentials'
 				});
 				return;
 			}
-			Response.success(req, res, next)({
-				details: 'Success on login'
+			Access.createSession(credential.dataValues.PersonId, res)
+			// Success
+			.then(function (session) {
+				Response.success(req, res, next)({
+					details: 'Welcome!'
+				})
 			})
+			// Error
+			.catch(
+				Response.error(req, res, next)
+			)
 		})
 		// Error
 		.catch(
