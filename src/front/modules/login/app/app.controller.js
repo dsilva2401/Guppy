@@ -8,6 +8,7 @@
 
 		// Methods
 			$scope.methods.submit = function () {
+				$scope.models.invalidPassword = true;
 				$resources.Login.post({
 					data: {
 						email: $scope.models.email,
@@ -16,10 +17,12 @@
 				})
 				// Success
 				.then(function (resp) {
+					$scope.models.loading = false;
 					$window.location.reload();
 				})
 				// Error
 				.catch(function (resp) {
+					$scope.models.loading = false;
 					console.warn(resp)
 					if (resp.status == 401) $scope.models.invalidCredentials = true;
 					if (resp.status >= 500) $scope.models.serverError = true;

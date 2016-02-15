@@ -14,6 +14,7 @@
 					$scope.models.repassword = '';
 					return;
 				}
+				$scope.models.loading = true;
 				$resources.Register.post({
 					data: {
 						name: $scope.models.name,
@@ -26,10 +27,12 @@
 				})
 				// Success
 				.then(function (resp) {
+					$scope.models.loading = false;
 					$window.location.reload();
 				})
 				// Error
 				.catch(function (resp) {
+					$scope.models.loading = false;
 					console.warn('Error on register', resp);
 				})
 			}
