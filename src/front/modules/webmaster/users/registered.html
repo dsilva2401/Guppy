@@ -1,10 +1,32 @@
 <div class="cover users-registered">
 
 	<form class="inputs-container" ng-submit="methods.findCode()">
-		<input type="text" placeholder="Error code" ng-model="models.code">
+		<input type="text" placeholder="Name or Email" ng-model="models.code">
 		<button>Find</button>
 	</form>
 
-	
+	<div class="results-container">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Sex</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="u in models.users">
+				<td>{{ u.name }} {{ u.lastname }}</td>
+				<td>{{ u.email }}</td>
+				<td>{{ u.sex=='m' ? 'Male': 'Female' }}</td>
+				<td>
+					<button>View</button>
+				</td>
+			</tr>
+		</table>
+		<button
+			class="load-more-btn"
+			ng-click="methods.loadMore()"
+			ng-if="!models.noMoreResults"
+		>Load more</button>
+	</div>
 
 </div>

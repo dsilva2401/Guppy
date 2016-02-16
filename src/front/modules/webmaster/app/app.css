@@ -7,6 +7,12 @@
 		height: 100%;
 	}
 
+	.loading-container{
+		border: none;
+		background: #eee;
+		opacity: 0.5;
+	}
+
 /* App */
 	.header-container {
 		position: absolute;

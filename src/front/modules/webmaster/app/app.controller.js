@@ -40,6 +40,12 @@
 					$window.location.reload();
 				})
 			}
+			$scope.methods.startLoading = function () {
+				$scope.models.loading = true;
+			}
+			$scope.methods.stopLoading = function () {
+				$scope.models.loading = false;
+			}
 		
 		
 		// Init

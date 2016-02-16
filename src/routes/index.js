@@ -33,6 +33,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 
 	// API
 		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
+		apiRouter.get('/users', API.Users.getAll);
 
 	// Views
 		viewsRouter.get('/wmaster', Auth.WebmasterAccess.verifySession, Views.webmaster );

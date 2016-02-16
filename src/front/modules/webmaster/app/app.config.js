@@ -8,6 +8,10 @@
 			$resourcesProvider.init({
 				resources: {
 
+					Users: {
+						route: '/api/v1/users/:userId?:query'
+					},
+
 					ServerError: {
 						route: '/api/v1/server-error/:errorId'
 					},
@@ -50,7 +54,7 @@
 					.state('users.registered', {
 						url: '/registered',
 						templateUrl: '/front/modules/webmaster/users/registered.html',
-						// controller: 'systemLogsServerErrorDetailsController'
+						controller: 'usersRegisteredController'
 					})
 
 
