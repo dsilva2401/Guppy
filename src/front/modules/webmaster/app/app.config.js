@@ -43,6 +43,15 @@
 						templateUrl: '/front/modules/webmaster/system-logs/server-error-details.html',
 						controller: 'systemLogsServerErrorDetailsController'
 					})
+				.state('users', {
+					url: '/users',
+					template: '<div class="cover" ui-view></div>'
+				})
+					.state('users.registered', {
+						url: '/registered',
+						templateUrl: '/front/modules/webmaster/users/registered.html',
+						// controller: 'systemLogsServerErrorDetailsController'
+					})
 
 
 	});

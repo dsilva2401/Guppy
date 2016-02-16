@@ -24,6 +24,12 @@
 						name: 'Client errors',
 						state: 'systemLogs.clientErrors'
 					}*/]
+				}, {
+					name: 'Users',
+					submodules: [{
+						name: 'Registered users',
+						state: 'users.registered'
+					}]
 				}]
 			}
 			$scope.methods.goToSubModule = function (state) {
