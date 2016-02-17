@@ -67,6 +67,16 @@ module.exports = function ($) {
 			next();
 		}
 	}
+
+	r.redirectIfNotLoggedIn = function (url) {
+		return function (req, res, next) {
+			if (!req.currentPerson) {
+				res.redirect(url);
+				return;
+			}
+			next();
+		}
+	}
 	
 	return r;
 }
