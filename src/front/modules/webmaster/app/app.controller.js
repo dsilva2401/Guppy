@@ -7,11 +7,14 @@
 		$scope.models = $scope.models || {};
 
 		// Methods
-			$scope.methods.serverErrorPopup = function (resp) {
-				gpyComponents.popup.show({
-					message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
-					type: 'error'
-				});
+			$scope.methods.responseError = function (resp) {
+				if (resp.status == 500) {
+					gpyComponents.popup.show({
+						message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
+						type: 'error'
+					});
+					console.warn('Error in server', resp);
+				}
 			}
 			$scope.methods.setModules = function () {
 				$scope.models.modules = [{
@@ -35,6 +38,12 @@
 					submodules: [{
 						name: 'Registered users',
 						state: 'users.registered'
+					}]
+				}, {
+					name: 'Roles',
+					submodules: [{
+						name: 'Manage roles',
+						state: 'roles.manage'
 					}]
 				}]
 			}

@@ -22,8 +22,7 @@
 				})
 				// Error
 				.catch(function (resp) {
-					$scope.methods.serverErrorPopup(resp)
-					console.warn( resp );
+					$scope.methods.responseError(resp);
 				})
 			}
 		

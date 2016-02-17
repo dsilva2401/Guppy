@@ -21,8 +21,7 @@
 				// Error
 				.catch(function (resp) {
 					gpyComponents.loading.stop();
-					$scope.methods.serverErrorPopup(resp);
-					console.warn('Error loading users', resp);
+					$scope.methods.responseError(resp);
 				})
 			}
 
@@ -42,8 +41,7 @@
 				// Error
 				.catch(function (resp) {
 					gpyComponents.loading.stop();
-					$scope.methods.serverErrorPopup(resp);
-					console.warn('Error loading users', resp);
+					$scope.methods.responseError(resp);
 				})
 			}
 		

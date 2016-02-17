@@ -3,6 +3,7 @@ module.exports = function ($) {
 
 	c.Logs = require('./Logs')($);
 	c.Users = require('./Users')($);
+	c.Roles = require('./Roles')($);
 
 	return c;
 }

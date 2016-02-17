@@ -28,6 +28,11 @@ module.exports = function ($config, $methods, $global, $database) {
 			active: { type: DataTypes.BOOLEAN, defaultValue: true }
 		});
 
+		var Role = db.define('Role', {
+			name: DataTypes.STRING,
+			active: { type: DataTypes.BOOLEAN, defaultValue: true }
+		});
+
 		var Credential = db.define('Credential', {
 			email: { type: DataTypes.STRING, unique: true },
 			username: { type: DataTypes.STRING, unique: true, allowNull: true },
@@ -78,6 +83,7 @@ module.exports = function ($config, $methods, $global, $database) {
 	// Relations
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
+		Role.belongsTo( Role,  { as: 'ParentRole' } );
 
 	// Sync database
 		db.sync();

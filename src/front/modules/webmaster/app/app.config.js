@@ -16,6 +16,10 @@
 						route: '/api/v1/server-error/:errorId'
 					},
 
+					Roles: {
+						route: '/api/v1/roles/:roleId'
+					},
+
 					Logout: {
 						route: '/auth/v1/webmaster/logout'
 					}
@@ -55,6 +59,15 @@
 						url: '/registered',
 						templateUrl: '/front/modules/webmaster/users/registered.html',
 						controller: 'usersRegisteredController'
+					})
+				.state('roles', {
+					url: '/roles',
+					template: '<div class="cover" ui-view></div>'
+				})
+					.state('roles.manage', {
+						url: '/manage',
+						templateUrl: '/front/modules/webmaster/roles/manage.html',
+						controller: 'rolesManageController'
 					})
 
 

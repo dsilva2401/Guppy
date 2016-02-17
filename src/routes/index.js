@@ -34,6 +34,10 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 	// API
 		apiRouter.get('/server-error/:errorId', API.Logs.getServerErrorDetails);
 		apiRouter.get('/users', API.Users.getAll);
+		apiRouter.get('/roles', API.Roles.getAll);
+		apiRouter.post('/roles', API.Roles.post);
+		apiRouter.put('/roles/:roleId', API.Roles.update);
+		apiRouter.delete('/roles/:roleId', API.Roles.disable);
 
 	// Views
 		viewsRouter.get('/wmaster', Auth.WebmasterAccess.verifySession, Views.webmaster );
