@@ -7,6 +7,12 @@
 		$scope.models = $scope.models || {};
 
 		// Methods
+			$scope.methods.serverErrorPopup = function (resp) {
+				gpyComponents.popup.show({
+					message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
+					type: 'error'
+				});
+			}
 			$scope.methods.submit = function () {
 				if ($scope.models.password != $scope.models.repassword) {
 					$scope.models.invalidPassword = true;
@@ -27,12 +33,13 @@
 				})
 				// Success
 				.then(function (resp) {
-					gpyComponents.loading.stop();
 					$window.location.reload();
+					gpyComponents.loading.stop();
 				})
 				// Error
 				.catch(function (resp) {
 					gpyComponents.loading.stop();
+					$scope.methods.serverErrorPopup(resp);
 					console.warn('Error on register', resp);
 				})
 			}

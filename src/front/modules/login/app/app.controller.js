@@ -7,6 +7,12 @@
 		$scope.models = $scope.models || {};
 
 		// Methods
+			$scope.methods.serverErrorPopup = function (resp) {
+				gpyComponents.popup.show({
+					message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
+					type: 'error'
+				});
+			}
 			$scope.methods.submit = function () {
 				gpyComponents.loading.start();
 				$scope.models.invalidPassword = true;
@@ -26,7 +32,10 @@
 					gpyComponents.loading.stop();
 					console.warn(resp)
 					if (resp.status == 401) $scope.models.invalidCredentials = true;
-					if (resp.status >= 500) $scope.models.serverError = true;
+					if (resp.status >= 500) {
+						$scope.models.serverError = true;
+						$scope.methods.serverErrorPopup(resp);
+					}
 					$scope.models.password = '';
 				});
 			}

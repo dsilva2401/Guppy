@@ -7,6 +7,12 @@
 		$scope.models = $scope.models || {};
 
 		// Methods
+			$scope.methods.serverErrorPopup = function (resp) {
+				gpyComponents.popup.show({
+					message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
+					type: 'error'
+				});
+			}
 		
 		
 		// Init

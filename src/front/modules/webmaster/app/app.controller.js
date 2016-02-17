@@ -2,11 +2,17 @@
 	
 	var app = ang.module('app');
 
-	app.controller('appController', function ($scope, $http, $state, $resources, $window) {
+	app.controller('appController', function ($scope, $http, $state, $resources, $window, gpyComponents) {
 		$scope.methods = $scope.methods || {};
 		$scope.models = $scope.models || {};
 
 		// Methods
+			$scope.methods.serverErrorPopup = function (resp) {
+				gpyComponents.popup.show({
+					message: 'Server error, please provide this code to the administrator: '+resp.data.errorId,
+					type: 'error'
+				});
+			}
 			$scope.methods.setModules = function () {
 				$scope.models.modules = [{
 					name: 'System logs',
@@ -39,12 +45,6 @@
 				$resources.Logout.delete().then(function (resp) {
 					$window.location.reload();
 				})
-			}
-			$scope.methods.startLoading = function () {
-				$scope.models.loading = true;
-			}
-			$scope.methods.stopLoading = function () {
-				$scope.models.loading = false;
 			}
 		
 		
