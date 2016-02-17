@@ -2,7 +2,7 @@
 	
 	var app = ang.module('app');
 
-	app.controller('appController', function ($scope, $http, $resources, $window) {
+	app.controller('appController', function ($scope, $http, $resources, $window, gpyComponents) {
 		$scope.methods = $scope.methods || {};
 		$scope.models = $scope.models || {};
 
@@ -14,7 +14,7 @@
 					$scope.models.repassword = '';
 					return;
 				}
-				$scope.models.loading = true;
+				gpyComponents.loading.start();
 				$resources.Register.post({
 					data: {
 						name: $scope.models.name,
@@ -27,12 +27,12 @@
 				})
 				// Success
 				.then(function (resp) {
-					$scope.models.loading = false;
+					gpyComponents.loading.stop();
 					$window.location.reload();
 				})
 				// Error
 				.catch(function (resp) {
-					$scope.models.loading = false;
+					gpyComponents.loading.stop();
 					console.warn('Error on register', resp);
 				})
 			}

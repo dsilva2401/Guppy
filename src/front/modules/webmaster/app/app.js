@@ -1,5 +1,5 @@
 (function (ang) {
 	
-	var app = ang.module('app', [ 'resources', 'ui.router', 'chart.js' ]);
+	var app = ang.module('app', [ 'resources', 'ui.router', 'chart.js', 'gpyComponents' ]);
 
 })(angular);
