@@ -33,5 +33,27 @@
 		}
 	})
 
+	// Popup
+	app.directive('gpyPopup', function () {
+		return {
+			restrict: 'EA',
+			templateUrl: '/front/components/gpy-components/popup.html',
+			scope: {},
+			controller: function ($scope, gpyComponents) {
+				gpyComponents.popup = {};
+				$scope.hidePopup = function () {
+					$scope.showPopup = false;
+				}
+				gpyComponents.popup.show = function (options) {
+					$scope.showPopup = true;
+					$scope.message = options.message;
+					$scope.type = options.type;
+				}
+				gpyComponents.popup.hide = function () {
+					$scope.showPopup = false;
+				}
+			}
+		}
+	})
 
 })(angular);
