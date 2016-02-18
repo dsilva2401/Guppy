@@ -1,3 +1,3 @@
 module.exports = function ( $methods, $global ) {
-	$methods.Router.getViewRoutes();
+	$methods.Router.getRouters();
 }
