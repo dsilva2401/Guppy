@@ -6,6 +6,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 		$.config = $config;
 		$.global = $global;
 		$.database = $database;
+		$.app = $app;
 
 	// Routes
 		var viewsRouter = $express.Router();
@@ -46,7 +47,7 @@ module.exports = function ( $express, $app, $methods, $config, $global, $databas
 		viewsRouter.get('/admin', Auth.Access.redirectIfNotLoggedIn('/login'), Views.admin );
 
 	// Set routers
-		$app.use( viewsRouter );
+		$app.use( '/', viewsRouter );
 		$app.use( '/auth/v1', authRouter );
 		$app.use( '/api/v1', apiRouter );
 

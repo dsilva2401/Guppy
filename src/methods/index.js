@@ -1,4 +1,4 @@
-module.exports = function ($methods, $database, $q, $config, $global) {
+module.exports = function ($methods, $database, $q, $config, $global, $app) {
 	
 	// Dependencies
 		var $ = {};
@@ -7,6 +7,7 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$.config = $config;
 		$.global = $global;
 		$.methods = $methods;
+		$.app = $app;
 
 	// Methods
 		$methods.SystemData = require('./SystemData')($);
@@ -17,4 +18,5 @@ module.exports = function ($methods, $database, $q, $config, $global) {
 		$methods.Response = require('./Response')($);
 		$methods.Webmaster = require('./Webmaster')($);
 		$methods.Access = require('./Access')($);
+		$methods.Router = require('./Router')($);
 }
