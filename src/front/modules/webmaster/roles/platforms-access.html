@@ -1,0 +1,16 @@
+<div class="cover">
+
+	<table>
+		<tr>
+			<th></th>
+			<th ng-repeat="r in models.roles">{{ r.name }}</th>
+		</tr>
+		<tr ng-repeat="p in models.platforms">
+			<td>{{ p.path }}</td>
+			<th ng-repeat="r in models.roles">
+				<input type="checkbox">
+			</th>
+		</tr>
+	</table>
+
+</div>

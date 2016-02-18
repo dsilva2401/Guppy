@@ -20,6 +20,10 @@
 						route: '/api/v1/roles/:roleId'
 					},
 
+					Platforms: {
+						route: '/api/v1/platforms/:platformPath'
+					},
+
 					Logout: {
 						route: '/auth/v1/webmaster/logout'
 					}
@@ -68,6 +72,11 @@
 						url: '/manage',
 						templateUrl: '/front/modules/webmaster/roles/manage.html',
 						controller: 'rolesManageController'
+					})
+					.state('roles.platformsAccess', {
+						url: '/platforms-access',
+						templateUrl: '/front/modules/webmaster/roles/platforms-access.html',
+						controller: 'rolesPlatformsAccessController'
 					})
 
 

@@ -44,6 +44,9 @@
 					submodules: [{
 						name: 'Manage roles',
 						state: 'roles.manage'
+					}, {
+						name: 'Platforms access',
+						state: 'roles.platformsAccess'
 					}]
 				}]
 			}
