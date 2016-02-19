@@ -28,11 +28,6 @@ module.exports = function ($config, $methods, $global, $database) {
 			active: { type: DataTypes.BOOLEAN, defaultValue: true }
 		});
 
-		var Role = db.define('Role', {
-			name: DataTypes.STRING,
-			active: { type: DataTypes.BOOLEAN, defaultValue: true }
-		});
-
 		var Credential = db.define('Credential', {
 			email: { type: DataTypes.STRING, unique: true },
 			username: { type: DataTypes.STRING, unique: true, allowNull: true },
@@ -79,32 +74,10 @@ module.exports = function ($config, $methods, $global, $database) {
 			status: DataTypes.STRING
 		});
 
-		var Survey = db.define('Survey', {
-			description: DataTypes.STRING
-		});
-
-		var Question = db.define('Question', {
-			content: DataTypes.STRING
-		});
-
-		var Answer = db.define('Answer', {
-			content: DataTypes.STRING
-		});
-
-		var Tag = db.define('Tag', {
-			name: { type: DataTypes.STRING, unique: true }
-		});
 
 	// Relations
 		Credential.belongsTo( Person );
 		SessionKey.belongsTo( Person );
-		Role.belongsTo( Role,  { as: 'ParentRole' } );
-		Answer.belongsTo( Question );
-		Question.belongsTo( Survey );
-		Tag.belongsToMany( Survey, { through: 'TagSurvey' } );
-		Survey.belongsToMany( Tag, { through: 'TagSurvey' } );
-		Tag.belongsToMany( Question, { through: 'TagQuestion' } );
-		Question.belongsToMany( Tag, { through: 'TagQuestion' } );
 
 	// Sync database
 		db.sync();

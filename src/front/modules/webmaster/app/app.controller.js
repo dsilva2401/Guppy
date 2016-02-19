@@ -39,15 +39,6 @@
 						name: 'Registered users',
 						state: 'users.registered'
 					}]
-				}, {
-					name: 'Roles',
-					submodules: [{
-						name: 'Manage roles',
-						state: 'roles.manage'
-					}, {
-						name: 'Platforms access',
-						state: 'roles.platformsAccess'
-					}]
 				}]
 			}
 			$scope.methods.goToSubModule = function (state) {

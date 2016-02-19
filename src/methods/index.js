@@ -18,5 +18,4 @@ module.exports = function ($methods, $database, $q, $config, $global, $app) {
 		$methods.Response = require('./Response')($);
 		$methods.Webmaster = require('./Webmaster')($);
 		$methods.Access = require('./Access')($);
-		$methods.Router = require('./Router')($);
 }
