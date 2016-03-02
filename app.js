@@ -25,6 +25,10 @@
 	app.run( require('./src/models') );
 
 
+// Setup engines
+	app.run( require('./src/engines') );
+
+
 // Setup methods
 	app.run( require('./src/methods') );
 
