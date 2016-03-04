@@ -1,0 +1,49 @@
+<html>
+	
+	<head>
+		<title>Webmaster</title>
+		<!-- Libs -->
+		<!-- build:css /front/modules/webmaster/dist/styles/libs.min.css -->
+		<link rel="stylesheet" href="/front/libs/angular-chart.js/dist/angular-chart.min.css">
+		<!-- endbuild -->
+
+		<!-- Styles -->
+		<!-- build:css /front/modules/webmaster/dist/styles/styles.min.css -->
+		<link rel="stylesheet" href="/front/modules/webmaster/dev/app/app.css">
+		<link rel="stylesheet" href="/front/modules/webmaster/dev/system-logs/general.css">
+		<link rel="stylesheet" href="/front/modules/webmaster/dev/system-logs/server-error-details.css">
+		<link rel="stylesheet" href="/front/modules/webmaster/dev/users/registered.css">
+		<!-- endbuild -->
+	</head>
+
+	<body ng-app="app">
+
+		<app-container class="cover"></app-container>
+
+		<gpy-components></gpy-components>
+
+		<!-- libs -->
+		<!-- build:js1 /front/modules/webmaster/dist/scripts/libs.min.js -->
+		<script src="/front/libs/angular/angular.min.js"></script>
+		<script src="/front/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="/front/libs/resources/dist/resources.min.js"></script>
+		<script src="/front/libs/Chart.js/Chart.min.js"></script>
+		<script src="/front/libs/angular-chart.js/dist/angular-chart.min.js"></script>
+		<!-- endbuild -->
+
+		<!-- Components -->
+		<script src="/front/components/gpy-components/module.js"></script>
+
+		<!-- Scripts -->
+		<!-- build:js /front/modules/webmaster/dist/scripts/scripts.min.js -->
+		<script src="/front/modules/webmaster/dev/app/app.js"></script>
+		<script src="/front/modules/webmaster/dev/app/app.config.js"></script>
+		<script src="/front/modules/webmaster/dev/app/app.controller.js"></script>
+		<script src="/front/modules/webmaster/dev/app/app.directive.js"></script>
+		<script src="/front/modules/webmaster/dev/system-logs/general.controller.js"></script>
+		<script src="/front/modules/webmaster/dev/system-logs/server-error-details.controller.js"></script>
+		<script src="/front/modules/webmaster/dev/users/registered.controller.js"></script>
+		<!-- endbuild -->
+	</body>
+
+</html>
