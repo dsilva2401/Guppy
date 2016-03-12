@@ -33,13 +33,12 @@ module.exports = {
 	databases: {
 		main: {
 			dev: {
-				database: 'dbName',
-				username: 'username',
-				password: 'pwd',
+				database: 'guppydev',
+				username: 'postgres',
+				password: 'postgres',
 				options: {
 					host: 'localhost',
-					dialect: 'sqlite',
-					storage: 'data/database.sqlite'
+					dialect: 'postgres'
 				}
 			}
 		}
