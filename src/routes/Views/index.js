@@ -26,11 +26,5 @@ module.exports = function ($) {
 		);
 	}
 
-	r.admin = function (req, res) {
-		res.sendFile(
-			$.global.path.join(__dirname,'../../front/modules/app-admin/'+envDir+'/index.html')
-		);
-	}
-
 	return r;
 }
