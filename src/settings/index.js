@@ -1,4 +1,3 @@
-var cookieParser = require('cookie-parser');
 module.exports = function ($app, $config, $express, $global, $httpServer) {
 
 	// Set parsers
@@ -7,7 +6,7 @@ module.exports = function ($app, $config, $express, $global, $httpServer) {
 	$app.use( $global.cookieParser() );
 
 	// Set logger
-	$app.use( $global.logger('dev') );
+	if (!$config.prod) $app.use( $global.logger('dev') );
 
 	// Compress all requests
 	$app.use( $global.compress() );

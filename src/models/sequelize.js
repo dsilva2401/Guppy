@@ -4,7 +4,7 @@ module.exports = function ($config, $methods, $global, $database) {
 		var name = 'main';
 
 	// Database configuration
-		var dbConfig = $config.databases[name][$config.env];
+		var dbConfig = $config.databases[name];
 
 	// Sequelize types
 		var DataTypes = $global.Sequelize;

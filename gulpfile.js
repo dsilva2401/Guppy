@@ -7,7 +7,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var fs = require('fs');
 
 
-// Generate build tasks
+// Build front task
   var buildTasks = [];
   fs.readdirSync('src/front/modules').forEach(function (frontModule) {
     var buildName = 'build-'+frontModule;
@@ -33,14 +33,12 @@ var fs = require('fs');
       { name: 'build', description: 'Build all front modules' }
     ];
     console.log('-----------------------------------');
-    console.log('-----------------------------------');
     console.log('\n');
     console.log('Tasks:\n');
     tasks.forEach(function (task) {
       console.log('gulp '+task.name, '('+task.description+')');
     })
     console.log('\n');
-    console.log('-----------------------------------');
     console.log('-----------------------------------');
   });
 
