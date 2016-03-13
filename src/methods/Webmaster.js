@@ -7,7 +7,7 @@ module.exports = function ($) {
 	Webmaster.verifyCredentials = function (username, password) {
 		var webmasters = SystemData.getWebmasters();
 		return !!webmasters.filter(function (e) {
-			return (e.username==username && e.password==password);
+			return (e.username==username && e.password==$.global.md5(password));
 		}).length;
 	}
 
