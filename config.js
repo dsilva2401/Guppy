@@ -32,3 +32,8 @@
 	exports.databases.main.options.host = 'localhost';
 	exports.databases.main.options.dialect = 'postgres';
 	exports.databases.main.options.logging = (ISPRODENV ? false : console.log);
+	// Mongo
+	exports.databases.mongo = {};
+	exports.databases.mongo.host = 'localhost';
+	exports.databases.mongo.port = 27017;
+	exports.databases.mongo.database = (ISPRODENV ? 'guppy' : 'guppydev');

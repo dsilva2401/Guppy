@@ -10,5 +10,6 @@ module.exports = function ($global, $config) {
 	$global.path = require('path');
 	$global.fs = require('fs');
 	$global.md5 = require('md5');
+	$global.mongoose = require('mongoose');
 
 }

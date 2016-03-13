@@ -21,11 +21,29 @@ module.exports = function ($) {
 		return mainDb;
 	}
 
+	var mongoDatabase = function () {
+		var db = $.database.mongo;
+		var mongoDb = {};
+
+		mongoDb.model = function (modelName) {
+			var dbModel = db.models[modelName];
+
+			// Methods
+
+			return dbModel;
+		}
+
+		return mongoDb;
+	}
+
 
 	return function (dbName) {
 		switch (dbName) {
 			case 'main':
 				return mainDatabase();
+			break;
+			case 'mongo':
+				return mongoDatabase();
 			break;
 		}
 	}
